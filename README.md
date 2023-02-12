@@ -13,5 +13,5 @@ Deploy your own example using [Vercel](https://vercel.com?utm_source=github&utm_
 
 ## How to use
 
-#server
+#server: 
 npm i cors dotenv express nodemon openai
