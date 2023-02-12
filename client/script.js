@@ -59,10 +59,19 @@ const handleSubmit = async (e) => {
   e.preventDefault();
 
   const data = new FormData(form);
-
-  // user's chatStripe
-  chatContainer.innerHTML += chatStripe(false, data.get("prompt"));
-
+  // console.log(data.get("prompt"));
+  if (
+    !data.get("prompt") ||
+    data.get("prompt") == "" ||
+    data.get("prompt").length <= 2
+  ) {
+    form.reset();
+    return alert("Please enter something!");
+  } else {
+    // user's chatStripe
+    chatContainer.innerHTML += chatStripe(false, data.get("prompt"));
+    console.log(data.get("prompt").length);
+  }
   form.reset();
 
   // bot's chatStripe
@@ -116,10 +125,12 @@ const copyText = (e) => {
 
   alert("Copied to clipboard!");
 };
+// if (data.get("prompt") !== null || data.get("prompt") !== '') {
 
+// }
 form.addEventListener("submit", handleSubmit);
 form.addEventListener("keyup", (e) => {
-  if (e.keyCode === 13 && form.value !== "") {
+  if (e.keyCode === 13) {
     handleSubmit(e);
   }
 });
