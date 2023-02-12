@@ -1,0 +1,2 @@
+npm i cors dotenv express nodemon openai
+
